@@ -1,8 +1,9 @@
 package com.pos.posproject.service;
 
-import PoSproject.PoS.Repository.MemoryPostRepository;
-import PoSproject.PoS.Repository.PostRepository;
-import PoSproject.PoS.domain.Group;
+
+import com.pos.posproject.Repository.MemoryPostRepository;
+import com.pos.posproject.Repository.PostRepository;
+import com.pos.posproject.domain.Group;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

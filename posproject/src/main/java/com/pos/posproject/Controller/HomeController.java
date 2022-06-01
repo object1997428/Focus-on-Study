@@ -2,12 +2,28 @@ package com.pos.posproject.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
 
-    @GetMapping("/") //가장 기본 페이지의 의미, 즉 루트페이지 위치
-    public String home() {
-        return "springHome";
+
+
+
+
+    @GetMapping("/search")
+    public String search_group(){
+        System.out.println("함수가 되긴함");
+        return "find_group";}
+
+    @GetMapping("/group")
+    public String group_page(){
+        System.out.println("함수가 되긴함");
+        return "group_page";}
+
+    @GetMapping("/spring")
+    public String springhome(){
+        return "springHome.html";
     }
 }

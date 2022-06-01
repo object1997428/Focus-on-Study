@@ -1,10 +1,10 @@
 package com.pos.posproject.service;
 
-import PoSproject.PoS.Repository.MemberRepository;
-import PoSproject.PoS.Repository.MemoryMemberRepository;
-import PoSproject.PoS.dao.LookupMapper;
-import PoSproject.PoS.domain.Member;
-import lombok.RequiredArgsConstructor;
+
+import com.pos.posproject.Repository.MemberRepository;
+import com.pos.posproject.Repository.MemoryMemberRepository;
+import com.pos.posproject.domain.Member;
+//import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +12,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class memberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final LookupMapper lookupMapper;
 
 
     public String join(Member member) {
@@ -33,8 +31,8 @@ public class memberService {
 
     }
 
-    public List<Member> findMembers() {
-        return LookupMapper.findAll();
+    public List<Member> findAll() {
+        return memberRepository.findAll();
     }
 
     public Optional<Member> findMemberById(String memberId) {

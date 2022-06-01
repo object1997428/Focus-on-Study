@@ -1,12 +1,11 @@
 package com.pos.posproject.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Data;
+//import lombok.Getter;
+//import lombok.Setter;
 
 
-@Getter
-@Setter
+
 public class Member {
 
     private int code;

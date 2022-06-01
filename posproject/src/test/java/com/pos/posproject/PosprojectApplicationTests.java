@@ -10,7 +10,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.time.LocalDateTime;
 
 @SpringBootTest
-@WebAppConfiguration
+/*@WebAppConfiguration*/
 class PosprojectApplicationTests {
 
 	@Autowired

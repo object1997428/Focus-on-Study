@@ -1,6 +1,7 @@
 package com.pos.posproject.Repository;
 
-import PoSproject.PoS.domain.Group;
+
+import com.pos.posproject.domain.Group;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

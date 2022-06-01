@@ -1,6 +1,8 @@
 package com.pos.posproject.Repository;
 
-import PoSproject.PoS.domain.Group;
+
+
+import com.pos.posproject.domain.Group;
 
 import java.util.List;
 import java.util.Optional;
