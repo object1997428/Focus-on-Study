@@ -96,17 +96,17 @@ public class  HomeController extends Socket {
 
     @GetMapping("/search")
     public String search_group(){
-        System.out.println("함수가 되긴함");
+        System.out.println("This is a Group Search page.");
         return "find_group";}
 
     @GetMapping("/search/user-detail")
     public String user_detail(){
+        System.out.println("This is an user detail page.");
         return "user_detail";
     }
 
     @GetMapping("/group")
     public String group_page(){
-        System.out.println("함수가 되긴함");
         return "group_page";}
 
     @GetMapping("/spring")
