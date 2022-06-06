@@ -73,6 +73,7 @@
 <script>
     let socket = new WebSocket("ws://localhost:8181/websocket");
 
+
     socket.onopen = function (e) {
         console.log('open server!')
     };
@@ -104,18 +105,18 @@
 
     function send_msg() {
         let content = document.querySelector('.content');
-        socket.send(content.value);
+
+        if (content.value == ''){
+            alert('메세지를 입력하세요!');
+        }
+        else{
+            socket.send(content.value);
+        }
+
         content.value="";
         content.focus();
     }
 
-    function is_json(msg){
-        try {
-            JSON.parse(msg);
-        }catch(e){
-            return false;
-        }
-        return true;
-    }
+
 </script>
 </html>
