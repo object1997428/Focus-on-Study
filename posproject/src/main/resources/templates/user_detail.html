@@ -7,7 +7,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>User 1</title>
 </head>
 <body>
@@ -68,7 +68,7 @@
         </div>
     </div>
 </div>
-<!--<script type="text/javascript" src="/static/js/user_screen_detail.js"></script>-->
+<script type="text/javascript" src="/js/user_screen_detail.js"></script>
 </body>
 <script>
     let socket = new WebSocket("ws://localhost:8181/websocket");
@@ -117,40 +117,5 @@
         }
         return true;
     }
-
-    window.addEventListener('load', function () {
-        showClock();
-    });
-
-    let Target = document.querySelector('#clock');
-    let End = document.querySelector('#end_btn');
-
-    let hours = 0,
-        minutes = 0,
-        seconds = 0;
-
-    function showClock() {
-        seconds += 1;
-        if (seconds == 60) {
-            (minutes += 1), (seconds = 0);
-        }
-        if (minutes == 60) {
-            (hours += 1), (minutes = 0);
-        }
-
-        let msg = hours + '시 ';
-        msg += minutes + '분 ';
-        msg += seconds + '초';
-
-        console.log(seconds);
-        Target.innerText = msg;
-    }
-
-    var timer = setInterval(showClock, 1000);
-
-    End.addEventListener('click', () => {
-        clearInterval(timer);
-        console.log(hours + ':' + minutes + ':' + seconds);
-    });
 </script>
 </html>

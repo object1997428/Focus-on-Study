@@ -94,6 +94,17 @@ public class  HomeController extends Socket {
         }
     }
 
+    @GetMapping("/css/style.css")
+    public String find_style(){
+        return "../static/css/style.css";
+    }
+
+    @GetMapping("/js/user_screen_detail.js")
+    public String find_js(){
+        return "../static/js/user_screen_detail.js";
+    }
+
+
     @GetMapping("/search")
     public String search_group(){
         System.out.println("This is a Group Search page.");
