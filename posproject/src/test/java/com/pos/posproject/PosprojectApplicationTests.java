@@ -17,7 +17,7 @@ class PosprojectApplicationTests {
 	private StudentMapper studentMapper;
 
 	@Test
-	void 학생_생성() {
+	void create_student() {
 		String code = "S20200102154530";
 		String name = "Son";
 		Student student = studentMapper.findOneByCode(code);
@@ -32,7 +32,7 @@ class PosprojectApplicationTests {
 	}
 
 	@Test
-	void 학생_리스트_출력() {
+	void print_student_list() {
 		studentMapper.findList().forEach(data -> System.out.println(data.getId()));
 	}
 
