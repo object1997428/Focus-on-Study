@@ -104,6 +104,10 @@ public class  HomeController extends Socket {
         return "../static/js/user_screen_detail.js";
     }
 
+    @GetMapping("/video_feed")
+    public String video_feed(){
+        return "user_detail";
+    }
 
     @GetMapping("/search")
     public String search_group(){
