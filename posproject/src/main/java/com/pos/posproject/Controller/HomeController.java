@@ -4,6 +4,7 @@ import com.pos.posproject.domain.Group;
 import com.pos.posproject.domain.Member;
 import com.pos.posproject.domain.Time;
 import com.pos.posproject.mapper.GroupMapper;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static ch.qos.logback.core.joran.action.ActionConst.NULL;
 import org.apache.tomcat.jni.Socket;
 import org.json.simple.JSONObject;
 import org.springframework.context.annotation.Bean;
@@ -75,7 +75,7 @@ public class  HomeController extends Socket {
     @Autowired
     private GroupMapper groupMapper;
 
-    private Member user;
+    private Member user1;
 
     @GetMapping("/css/style.css")
     public String find_style(){
@@ -101,9 +101,9 @@ public class  HomeController extends Socket {
         System.out.println("This is a Group Search page.");
         List<Group> groups =groupMapper.findGroups();
         model.addAttribute("groups",groups);
-        model.addAttribute("member",user);
+        model.addAttribute("member",user1);
 
-        Time time=new Time(user.getStudyTime());
+        Time time=new Time(user1.getStudyTime());
         model.addAttribute("time",time);
         return "find_group";
     }
@@ -112,7 +112,7 @@ public class  HomeController extends Socket {
     @PostMapping("/search")//login을 여기서 해서 search페이지로 넘어감
     public String login(String id,String pwd,Model model){
         Member member=groupMapper.findMemberById(id);
-        if(member.getId()==NULL){
+        if(member.getId()== null){
             System.out.println("일치하는 회원이 없습니다. ");
             return "main";
         }
@@ -120,13 +120,13 @@ public class  HomeController extends Socket {
             System.out.println("비밀번호가 틀렸습니다. ");
             return "main";
         }
-        user=member;
+        user1=member;
         List<Group> groups =groupMapper.findGroups();
 
         model.addAttribute("member",member);
         model.addAttribute("groups",groups);
 
-        Time time=new Time(user.getStudyTime());
+        Time time=new Time(user1.getStudyTime());
         System.out.println(time+" 되는데?");
         model.addAttribute("time",time);
         return "find_group";
@@ -137,14 +137,14 @@ public class  HomeController extends Socket {
     public String search_group(@ModelAttribute("title") String title,Model model){
         Group group=groupMapper.findOneByTitle(title);
         model.addAttribute("group",group);
-        model.addAttribute("member",user);
+        model.addAttribute("member",user1);
         System.out.println("타이틀: "+group.getGroup_title());
         System.out.println("설명: "+group.getGroup_explain());
         System.out.println("마스터: "+group.getGroup_master_id());
         System.out.println("코드: "+group.getGroup_code());
         System.out.println("마스터 코드: "+group.getGroup_master_code());
 
-        Time time=new Time(user.getStudyTime());
+        Time time=new Time(user1.getStudyTime());
         model.addAttribute("time",time);
         return "find_group";
     }
@@ -154,7 +154,7 @@ public class  HomeController extends Socket {
         System.out.println("This is an user detail page.");
         Group group=groupMapper.findOneByCode(codeNum);
         model.addAttribute("group",group);
-        model.addAttribute("member",user);
+        model.addAttribute("member",user1);
         return "user_screen_detail";
     }
 
@@ -167,18 +167,18 @@ public class  HomeController extends Socket {
     @PostMapping("/exit")
     public String Exit(Model model, String time){
         Integer t=Integer.parseInt(time);
-        t+= user.getStudyTime();
-        user.setStudyTime(t);
-        groupMapper.updatestudyTime(user);
+        t+= user1.getStudyTime();
+        user1.setStudyTime(t);
+        groupMapper.updatestudyTime(user1);
 
-        Time tt=new Time(user.getStudyTime());
+        Time tt=new Time(user1.getStudyTime());
         model.addAttribute("time",tt);
 
         //여기서 공부한 시간 받아서 저장해야함
         System.out.println("This is a Group Search page.");
         List<Group> groups =groupMapper.findGroups();
         model.addAttribute("groups",groups);
-        model.addAttribute("member",user);
+        model.addAttribute("member",user1);
         return "find_group";
     }
 
