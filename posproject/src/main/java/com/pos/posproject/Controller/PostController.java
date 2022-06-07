@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+//@RestController
 public class PostController {
 
 //    private final com.pos.posproject.service.postService postService;

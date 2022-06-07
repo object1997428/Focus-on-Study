@@ -9,8 +9,8 @@ import java.util.*;
 @Repository
 public class MemoryPostRepository implements PostRepository {
 
-    private static Map<Long, Group> store = new HashMap<>();//코드, 포스트클래스
-    private static long sequence = 0L;
+    private static Map<Integer, Group> store = new HashMap<>();//코드, 포스트클래스
+    private static Integer sequence = 0;
 
     public void clearStore() {
         store.clear();
@@ -18,8 +18,8 @@ public class MemoryPostRepository implements PostRepository {
 
     @Override
     public Group save(Group group) {
-        group.setCode(++sequence);
-        store.put(group.getCode(), group);
+        group.setGroup_code(++sequence);
+        store.put(group.getGroup_code(), group);
         return group;
     }
 
@@ -31,14 +31,14 @@ public class MemoryPostRepository implements PostRepository {
     @Override
     public Optional<Group> findByTitle(String title) {
         return store.values().stream()
-                .filter(group -> group.getTitle().equals(title))
+                .filter(group -> group.getGroup_title().equals(title))
                 .findAny();
     }
 
     @Override
     public Optional<Group> findByWriter(String writer) {//작성자로 검색
         return store.values().stream()
-                .filter(group -> group.getWriter_id().equals(writer))
+                .filter(group -> group.getGroup_master_id().equals(writer))
                 .findAny();
     }
 

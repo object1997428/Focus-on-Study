@@ -15,7 +15,7 @@ public class postService {
 
     public String registerPost(Group group) {//왜 저장하고 code말고 title저장하는지는 모르겠는데
         postRepository.save(group);
-        return group.getTitle();
+        return group.getGroup_title();
     }
 
     public List<Group> findPosts() {
