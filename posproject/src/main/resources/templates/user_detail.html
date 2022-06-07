@@ -15,7 +15,7 @@
     <div class="user_screen_container">
         <header>
             <div class="user_screen_head">
-                <span class="user_screen_header"> [사용자] 화면 상세 </span>
+                <span class="user_screen_header"> <span th:text="${member.name}"/> 화면 상세 </span>
             </div>
         </header>
         <div class="user_screen_info">
@@ -49,6 +49,7 @@
                 <div class="user_info">
                     <div class="user_detail" name="box-1">
                         <span class="name">이름</span>
+                        <span th:text="${member.name}"/>
                     </div>
                     <div class="user_detail" name="box-2">
                         <span class="time">시간</span><br />
@@ -56,9 +57,11 @@
                     </div>
                     <div class="user_detail" name="box-3">
                         <span class="title">주제</span>
+                        <span th:text="${group.group_title}"/>
                     </div>
                     <div class="user_detail" name="box-4">
                         <span class="description">설명</span>
+                        <span th:text="${group.group_explain}"/>
                     </div>
                     <div>
                         <button id="end_btn">나가기</button>
