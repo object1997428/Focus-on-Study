@@ -19,28 +19,38 @@ h2 {
     top: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h2 {
+  position: relative;
+  top: 10px;
+}
+
 /* Find group page */
 
 #findGroup.content {
-    text-align: center;
-    background-color: #f0ffff;
-    height: 700px;
-    margin-top: 27px;
-    margin-bottom: 27px;
+  text-align: center;
+  background-color: #f0ffff;
+  height: 700px;
+  margin-top: 27px;
+  margin-bottom: 27px;
 }
 
 #findGroup.finded {
-    border: 1px solid rgb(219, 219, 219);
-    background-color: rgb(243, 243, 243);
-    border-radius: 10px;
-    width: 90%;
-    height: 530px;
-    margin: 20px;
-    margin-bottom: 20px;
-    overflow: scroll;
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
+  width: 90%;
+  height: 530px;
+  margin: 20px;
+  margin-bottom: 20px;
+  overflow: scroll;
 
-    position: relative;
-    left: 47px;
+  position: relative;
+  left: 47px;
 }
 
 /* Find Group */
@@ -93,6 +103,29 @@ h2 {
     cursor: pointer;
 }
 
+.userInfo {
+  width: 200px;
+  height: 70px;
+  float: right;
+  margin-right: 10px;
+  position: relative;
+  bottom: 25px;
+  font-size: 14px;
+}
+
+.userIcon {
+  font-size: 26px;
+}
+
+.findContent {
+  margin-left: 230px;
+}
+
+#findIcon {
+  font-size: 17px;
+  cursor: pointer;
+}
+
 /* Group page */
 
 .group_screen_container {
@@ -128,16 +161,18 @@ h2 {
 /* User Info */
 
 .user_screen_content {
-    margin: 20px;
-    height: 1080px;
-    background-color: azure;
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  height: 1080px;
+  background-color: azure;
 }
 
 .user_screen_container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    height: 100%;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .user_screen_head {
@@ -166,25 +201,68 @@ h2 {
 }
 
 .side.left_screen {
-    display: flex;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
+  height: 100%;
+  vertical-align: bottom;
+  text-align: center;
 }
 
-.screen_view {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(241, 241, 241, 0.692);
+.side.left_screen .msg_area {
+  width: 100%;
+  height: 95%;
+  overflow: scroll;
+}
+
+.side.left_screen .msg_area::-webkit-scrollbar {
+  /*display: none;*/
+}
+
+.chat_send_area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 5%;
+}
+
+.chat_send_area .content {
+  width: 80%;
+}
+
+.chat_send_area .send_btn {
+  width: 20%;
+}
+
+.msg_area .chat_text {
+  display: block;
+  width: 75%;
+  height: 40px;
+  border-bottom: 1px solid #7a7a7a;
+  text-align: center;
+  font-size: large;
+}
+
+.chat_text.me {
+  background-color: #ffc9b5;
+  margin: 10px 0 10px auto;
+}
+
+.chat_text.other {
+  background-color: #cbff9f;
+  margin: 10px auto 10px 0;
 }
 
 .side.right_info {
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    position: relative;
+  width: 65%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.screen_view {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  background-color: rgba(241, 241, 241, 0.692);
 }
 
 .user_info {
@@ -194,10 +272,10 @@ h2 {
 }
 
 .user_detail {
-    position: relative;
-    display: block;
-    border: 1px solid black;
-    height: 25%;
+  position: relative;
+  display: block;
+  border-top: 1px solid black;
+  height: 25%;
 }
 
 #clock {
