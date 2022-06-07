@@ -1,0 +1,85 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pos.posproject.mapper.GroupMapper">
+
+
+    <select id="findMembers" resultType="com.pos.posproject.domain.Member">
+        SELECT
+            user_code as 'code',
+            user_name as 'name',
+            user_time as 'studyTime',
+            user_id as 'id',
+            user_pwd as 'pwd'
+        FROM usertbl
+    </select>
+
+    <select id="findGroups" resultType="com.pos.posproject.domain.Group">
+        SELECT
+            group_code,
+            group_title,
+            group_mcode,
+            group_explain,
+            group_master
+        FROM group2tbl
+    </select>
+
+    <update id="updatestudyTime" parameterType="com.pos.posproject.domain.Member">
+        UPDATE usertbl
+        SET user_time=#{studyTime}
+        WHERE user_id=#{id}
+    </update>
+
+    <select id="findMemberById" parameterType="String" resultType="com.pos.posproject.domain.Member">
+        SELECT
+            user_code as 'code',
+            user_name as 'name',
+            user_time as 'studyTime',
+            user_id as 'id',
+            user_pwd as 'pwd'
+        FROM usertbl
+        WHERE user_id = #{id}
+    </select>
+
+    <select id="findOneByCode" parameterType="int" resultType="com.pos.posproject.domain.Group">
+        SELECT
+            group_code,
+            group_title,
+            group_mcode
+            group_master,
+            group_explain
+        FROM group2tbl
+        WHERE group_code = #{group_code}
+    </select>
+
+    <select id="findOneByTitle" parameterType="String" resultType="com.pos.posproject.domain.Group">
+        SELECT
+            group_code,
+            group_title,
+            group_mcode,
+            group_explain,
+            group_master
+        FROM group2tbl
+        WHERE group_title = #{group_title}
+    </select>
+
+    <insert id="save" parameterType="com.pos.posproject.domain.Group">
+        INSERT INTO group2tbl (
+            group_title,
+            group_explain,
+            group_mcode,
+            group_master
+        ) VALUES (
+                     #{group_title},
+                     #{group_explain},
+                     #{group_master_code},
+                    #{group_master_id}
+                 )
+    </insert>
+
+
+    <delete id = "deleteByTitle" parameterType="String">
+        DELETE FROM grouptbl WHERE group_title = #{title}
+    </delete>
+</mapper>

@@ -16,77 +16,48 @@
   <h2>그룹찾기</h2>
   <div class="userInfo">
     <div class="userIcon"><i class="fa-solid fa-user-large"></i></div>
-    (이름)님 환영합니다
+    <span th:text="${member.name}"/>님 환영합니다<br>
+    <span th:text="${time.hour}+'시 '+${time.minute}+'분 '+${time.second}+'초 공부하셨습니다!'"/>
   </div>
 
-  <div class="findContent">
-    <input type="text" name="Group" placeholder="검색하기" />
-    <i id="findIcon" class="fa-solid fa-magnifying-glass"></i>
-  </div>
+<!--  <div class="findContent">-->
+<!--    <input type="text" name="Group" placeholder="검색하기" />-->
+<!--    <i id="findIcon" class="fa-solid fa-magnifying-glass"></i>-->
+<!--  </div>-->
+
+  <form action="/search_group" method="GET">
+    <div>
+      <input name="title" type="text" placeholder="제목을 입력해주세요">
+    </div>
+    <button>검색</button>
+  </form>
   <br />
 
-  <div class="found">
-    <a href="/search/user-detail">
+  <div class="finded" id="findGroup">
+    <tr th:each="group : ${group}">
+      <a th:href="@{'/search/user-detail?code='+${group.group_code}}">
       <div class="group_box">
         <div class="group_picture">
-          <span>그룹 이름</span>
+          <span><td th:text="${group.group_title}"></td></span>
         </div>
         <div class="group_description">
-          <span>그룹 설명</span>
+          <span><td th:text="${group.group_explain}"></td></span>
         </div>
       </div>
-    </a>
-
-    <a href="/search/user-detail">
-      <div class="group_box">
-        <div class="group_picture">
-          <span>그룹 이름</span>
+      </a>
+    </tr>
+    <tr th:each="group : ${groups}">
+      <a th:href="@{'/search/user-detail?code='+${group.group_code}}">
+        <div class="group_box">
+          <div class="group_picture">
+            <span><td th:text="${group.group_title}"></td></span>
+          </div>
+          <div class="group_description">
+            <span><td th:text="${group.group_explain}"></td></span>
+          </div>
         </div>
-        <div class="group_description">
-          <span>그룹 설명</span>
-        </div>
-      </div>
-    </a>
-    <a href="/search/user-detail">
-      <div class="group_box">
-        <div class="group_picture">
-          <span>그룹 이름</span>
-        </div>
-        <div class="group_description">
-          <span>그룹 설명</span>
-        </div>
-      </div>
-    </a>
-    <a href="/search/user-detail">
-      <div class="group_box">
-        <div class="group_picture">
-          <span>그룹 이름</span>
-        </div>
-        <div class="group_description">
-          <span>그룹 설명</span>
-        </div>
-      </div>
-    </a>
-    <a href="/search/user-detail">
-      <div class="group_box">
-        <div class="group_picture">
-          <span>그룹 이름</span>
-        </div>
-        <div class="group_description">
-          <span>그룹 설명</span>
-        </div>
-      </div>
-    </a>
-    <a href="/search/user-detail">
-      <div class="group_box">
-        <div class="group_picture">
-          <span>그룹 이름</span>
-        </div>
-        <div class="group_description">
-          <span>그룹 설명</span>
-        </div>
-      </div>
-    </a>
+      </a>
+    </tr>
   </div>
 </div>
 </body>
@@ -94,7 +65,7 @@
   const findBtn = document.querySelector('#findIcon');
 
   findBtn.addEventListener('click', () => {
-    location.href = 'templates/user_screen_detail.html';
+    location.href = '/search/user-detail';
   });
 </script>
 </html>

@@ -18,6 +18,12 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-context</artifactId>-->
+<!--			<version>4.2.5.RELEASE</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-surefire-plugin</artifactId>

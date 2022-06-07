@@ -24,11 +24,6 @@ public class MemberController {
         return "members/newmember.html";
     }
 
-    @GetMapping("/") //가장 기본 페이지의 의미, 즉 루트페이지 위치
-    public String home() {
-        System.out.println("함수가 되긴함");
-        return "main";
-    }
 
     @PostMapping("/members/new")
     public String create(MemberForm form) { //회원가입
@@ -36,7 +31,7 @@ public class MemberController {
             Member member = new Member();
             member.setName(form.getName());
             member.setId(form.getUserid());
-            member.setPasswd(form.getUserpw());
+            member.setPwd(form.getUserpw());
 
             memberService.join(member);
 
@@ -64,7 +59,7 @@ public class MemberController {
             if (finded!=null) {
                 System.out.println("일치하는 회원이 없습니다");
                 return "/members/login.html";
-            } else if (loginpw.equals(finded.get().getPasswd()) == false) {
+            } else if (loginpw.equals(finded.get().getPwd()) == false) {
                 System.out.println("비밀번호가 틀렸습니다");
                 return "/members/login.html";
             } else {
@@ -84,6 +79,5 @@ public class MemberController {
         model.addAttribute("members", members);
         return "/members/members_list.html";
     }
-
 
 }
