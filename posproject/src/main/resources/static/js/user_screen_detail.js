@@ -22,7 +22,6 @@ function showClock() {
     msg += minutes + '분 ';
     msg += seconds + '초';
 
-    console.log(seconds);
     Target.innerText = msg;
 }
 

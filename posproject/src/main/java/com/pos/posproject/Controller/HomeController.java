@@ -101,7 +101,7 @@ public class  HomeController extends Socket {
         System.out.println("This is a Group Search page.");
         List<Group> groups =groupMapper.findGroups();
         model.addAttribute("groups",groups);
-        model.addAttribute("member",user1);
+        model.addAttribute("member",user);
 
         Time time=new Time(user1.getStudyTime());
         model.addAttribute("time",time);
