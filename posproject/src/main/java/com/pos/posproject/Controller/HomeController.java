@@ -155,7 +155,7 @@ public class  HomeController extends Socket {
         Group group=groupMapper.findOneByCode(codeNum);
         model.addAttribute("group",group);
         model.addAttribute("member",user1);
-        return "user_screen_detail";
+        return "user_detail";
     }
 
     @GetMapping("/spring")
