@@ -10,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.apache.tomcat.jni.Socket;
@@ -19,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import javax.websocket.*;
@@ -227,6 +233,7 @@ public class  HomeController extends Socket {
         Group group=groupMapper.findOneByCode(codeNum);
         model.addAttribute("group",group);
         model.addAttribute("member",user1);
+
         return "user_detail";
     }
 
