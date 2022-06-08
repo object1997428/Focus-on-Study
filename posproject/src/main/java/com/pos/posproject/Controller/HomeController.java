@@ -72,6 +72,38 @@ public class  HomeController extends Socket {
         System.out.println("유저 삭제: " + close_user);
     }
 
+    @OnMessage
+    public void getMsg(Session recieveSession, String msg) {
+        for (int i = 0; i < session.size(); i++) {
+            if (!recieveSession.equals(session.get(i))) {
+                try {
+                    JSONObject user_info = new JSONObject();
+                    user_info.put("user_name", user.get(recieveSession));
+                    user_info.put("msg", msg);
+                    user_info.put("status",  "other");
+
+                    session.get(i).getBasicRemote().sendText(String.valueOf(user_info));
+                    // 상대
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }else{
+                try {
+                    JSONObject user_info = new JSONObject();
+                    user_info.put("user_name", user.get(session.get(i)));
+                    user_info.put("msg", msg);
+                    user_info.put("status",  "me");
+
+                    session.get(i).getBasicRemote().sendText(String.valueOf(user_info));
+                    // 나 session.get(i)
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     @Autowired
     private GroupMapper groupMapper;
 
