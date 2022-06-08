@@ -90,6 +90,25 @@ public class  HomeController extends Socket {
         return "../static/js/user_screen_detail.js";
     }
 
+//    @GetMapping("/memo1.png")
+//    public String Memo1(){
+//        System.out.println("이미지 매핑 돌아감");
+//        return "../static/css/memo1.png";
+//    }
+//
+//    @GetMapping("/memo2.png")
+//    public String Memo2(){
+//        System.out.println("이미지 매핑 돌아감");
+//        return "../static/css/memo2.png";
+//    }
+//
+//    @GetMapping("/memo3.png")
+//    public String Memo3(){
+//        System.out.println("이미지 매핑 돌아감");
+//        return "../static/css/memo3.png";
+//    }
+
+
     @GetMapping("/") //가장 기본 페이지의 의미, 즉 루트페이지 위치
     public String home() {
         System.out.println("함수가 되긴함");
@@ -101,7 +120,7 @@ public class  HomeController extends Socket {
         System.out.println("This is a Group Search page.");
         List<Group> groups =groupMapper.findGroups();
         model.addAttribute("groups",groups);
-        model.addAttribute("member",user);
+        model.addAttribute("member",user1);
 
         Time time=new Time(user1.getStudyTime());
         model.addAttribute("time",time);
@@ -112,7 +131,7 @@ public class  HomeController extends Socket {
     @PostMapping("/search")//login을 여기서 해서 search페이지로 넘어감
     public String login(String id,String pwd,Model model){
         Member member=groupMapper.findMemberById(id);
-        if(member.getId()== null){
+        if(member==null){
             System.out.println("일치하는 회원이 없습니다. ");
             return "main";
         }

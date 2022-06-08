@@ -17,6 +17,10 @@ public class Member {
     public Member() {
     }
 
+    public Member(Integer code){
+        this.code=code;
+    }
+
     public Member(String name, String id, String pwd) {
         this.name = name;
         this.id = id;
