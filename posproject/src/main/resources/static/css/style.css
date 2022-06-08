@@ -185,9 +185,11 @@ h2 {
 
 .msg_area .chat_text {
     display: block;
-    height: 150px;
-    background-color: #6495ed;
-    border: 1px solid #7a7a7a;
+    width: 75%;
+    height: 40px;
+    border-bottom: 1px solid #7a7a7a;
+    text-align: center;
+    font-size: large;
 }
 
 .chat_send_area {
@@ -206,11 +208,13 @@ h2 {
 }
 
 .chat_text.me {
-    background-color: coral;
+    background-color: #ffc9b5;
+    margin: 10px 0 10px auto;
 }
 
 .chat_text.other {
-    background-color: greenyellow;
+    background-color: #cbff9f;
+    margin: 10px auto 10px 0;
 }
 
 .side.right_info {
