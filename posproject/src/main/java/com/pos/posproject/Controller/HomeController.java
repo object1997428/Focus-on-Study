@@ -35,20 +35,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+//@ServerEndpoint("/websocket")
 @Controller
-@ServerEndpoint("/websocket")
-public class  HomeController extends Socket {
+public class  HomeController {
 
     @Autowired
     private GroupMapper groupMapper;
     private Member user1;
 
     public String userId;
-    private static final List<Session> session = new ArrayList<Session>();
-    private static final Map<Object, String> user = new HashMap<Object, String>();
+//    private static final List<Session> session = new ArrayList<Session>();
+//    private static final Map<Object, String> user = new HashMap<Object, String>();
     // session, user_id
 
-    public String make_random_name() {
+   /* public String make_random_name() {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         System.out.println("유저 아이디 만들 때: "+userId);
 
@@ -60,10 +61,10 @@ public class  HomeController extends Socket {
 //        String result=(user1==null)? "123":user1.getId();
 
         return result;
-    }
+    }*/
 
     // session 열리면
-    @OnOpen
+   /* @OnOpen
     public void open(Session new_user) throws IOException, EncodeException {
         System.out.println("open1 유저아이디: "+userId);
         System.out.println("connected: " + new_user.getId());
@@ -118,12 +119,12 @@ public class  HomeController extends Socket {
             }
         }
     }
-
+*/
 
 
     @GetMapping("/css/style.css")
     public String find_style(){
-        System.out.println("style.css 찾는 중?");
+        System.out.println("style.css 찾는 중");
         return "../static/css/style.css"; //아 ./가 template인듯? ../가 resource고.. 왜 그런지는 모르겠네;
     }
 
@@ -198,9 +199,6 @@ public class  HomeController extends Socket {
     }
 
 
-
-
-
     @GetMapping("/search_group")
     public String search_group(@ModelAttribute("title") String title,Model model){
         System.out.println("검색: 유저 아이디: "+userId);
@@ -253,8 +251,8 @@ public class  HomeController extends Socket {
         return search_page(model);
     }
 
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
+//    @Bean
+//    public ServerEndpointExporter serverEndpointExporter() {
+//        return new ServerEndpointExporter();
+//    }
 }

@@ -2,7 +2,6 @@ package com.pos.posproject.mapper;
 
 import com.pos.posproject.domain.Group;
 import com.pos.posproject.domain.Member;
-import com.pos.posproject.domain.Student;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
